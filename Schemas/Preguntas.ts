@@ -1,13 +1,12 @@
-import mongoose from 'mongoose';
-const { Schema } = mongoose;
+import mongoose, { Schema } from 'mongoose';
 
-const Preguntas = new Schema({
-  title: String, // String is shorthand for {type: String}
-  detalle_pregunta: String,
-  ejemplo: String,
-  fecha: Date,
-  id_categoria: Number,
-  mayor_de_edad: Boolean
+const PreguntaScheme = new Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    detalle_pregunta: String,
+    ejemplo: String,
+    fecha: Date,
+    id_categoria: Number,
+    mayor_de_edad: Boolean
 });
 
-export default Preguntas
+export default mongoose.model('Preguntas', PreguntaScheme, 'Preguntas')

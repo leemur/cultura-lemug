@@ -1,21 +1,16 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import preguntas from '../../../Schemas/Preguntas'
-import mongoose from 'mongoose';
-
+import PreguntaScheme from '../../../Schemas/Preguntas'
 
 export default class QuestionsController {
 
-    public async branchAll({
+    public async GetAllQuestions({
         params,
         request,
         response,
       }: HttpContextContract) {
-        
-        const preguntasModel = mongoose.model('Preguntas');
-
-        await preguntasModel.find({});
-
-            response.status(200)        
+        const resultados = await PreguntaScheme.find()
+        response.send(resultados)
+        response.status(200)        
     }
 }
